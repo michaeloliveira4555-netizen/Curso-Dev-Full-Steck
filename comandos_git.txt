@@ -1,0 +1,141 @@
+===============================================================================
+                       GUIA COMPLETO DE COMANDOS GIT E BASH
+===============================================================================
+
+-------------------------------------------------------------------------------
+1. COMANDOS DO DIA A DIA (BÁSICO DO GIT)
+-------------------------------------------------------------------------------
+git status
+   - Mostra o estado atual do repositório (arquivos modificados, novos ou salvos).
+
+git add .
+   - Prepara todos os arquivos novos e modificados para o commit.
+
+git add nome-do-arquivo.ext
+   - Prepara apenas um arquivo específico.
+
+git commit -m "sua mensagem aqui"
+   - Grava as alterações preparadas no histórico do seu computador.
+
+git push
+   - Envia os commits locais para o servidor do GitHub.
+
+git pull
+   - Baixa e mescla as alterações mais recentes do GitHub no seu computador.
+
+git log --oneline
+   - Mostra um histórico curto dos commits realizados.
+
+git log -p
+   - Mostra o histórico detalhado exibindo as linhas que mudaram em cada arquivo.
+
+git diff
+   - Mostra o que foi alterado nos arquivos que ainda não foram preparados (antes do git add).
+
+-------------------------------------------------------------------------------
+2. CONFIGURAÇÃO DE CONTAS E AUTOR
+-------------------------------------------------------------------------------
+git config --list
+   - Lista todas as configurações ativas do Git.
+
+git config user.name "seu-usuario"
+   - Define o nome do autor do commit APENAS na pasta atual.
+
+git config user.email "seu-email@gmail.com"
+   - Define o e-mail do autor do commit APENAS na pasta atual.
+
+git config --global user.name "seu-usuario"
+   - Define o nome de autor padrão para TODO o computador.
+
+git config --global user.email "seu-email@gmail.com"
+   - Define o e-mail de autor padrão para TODO o computador.
+
+-------------------------------------------------------------------------------
+3. TRABALHANDO COM RAMIFICAÇÕES (BRANCHES)
+-------------------------------------------------------------------------------
+git branch
+   - Lista as branches existentes no repositório. A atual fica marcada com um asterisco (*).
+
+git branch nome-da-branch
+   - Cria uma nova branch com o nome especificado.
+
+git checkout nome-da-branch
+   - Muda para a branch especificada.
+
+git checkout -b nome-da-branch
+   - Cria uma nova branch e muda para ela imediatamente.
+
+git merge nome-da-branch
+   - Une (mescla) as alterações da branch especificada na branch onde você está no momento.
+
+git branch -d nome-da-branch
+   - Exclui a branch especificada (só funciona se ela já tiver sido unida/merged).
+
+-------------------------------------------------------------------------------
+4. DESFAZENDO ALTERAÇÕES (RESET & REVERT)
+-------------------------------------------------------------------------------
+git restore nome-do-arquivo.ext
+   - Descarta as alterações não salvas de um arquivo (volta ao estado do último commit).
+
+git restore --staged nome-do-arquivo.ext
+   - Remove um arquivo do estado preparado (tira do "git add" mas mantém as alterações no código).
+
+git commit --amend -m "nova mensagem"
+   - Altera a mensagem do último commit realizado (caso tenha errado a digitação).
+
+git reset --soft HEAD~1
+   - Desfaz o último commit feito no seu computador, mantendo as alterações nos arquivos prontas para commit novamente.
+
+git reset --hard HEAD~1
+   - APAGA completamente o último commit e descarta todas as alterações feitas nele. Use com muito cuidado!
+
+-------------------------------------------------------------------------------
+5. GERENCIAMENTO DE REPOSITÓRIOS REMOTOS (REMOTES)
+-------------------------------------------------------------------------------
+git remote -v
+   - Mostra os links (URLs) de entrada e saída associados ao repositório local.
+
+git remote set-url origin git@github.com-michael:usuario/repositorio.git
+   - Altera o link do repositório atual para usar a conexão SSH configurada.
+
+git remote add origin <URL>
+   - Conecta uma pasta local vazia a um repositório novo no GitHub.
+
+-------------------------------------------------------------------------------
+6. COMANDOS DE NAVEGAÇÃO E TERMINAL (BASH)
+-------------------------------------------------------------------------------
+pwd
+   - Mostra em qual pasta você está no terminal neste momento.
+
+ls
+   - Lista os arquivos e pastas do diretório atual.
+
+ls -la
+   - Lista todos os arquivos, incluindo ocultos (ex: pasta .git e pasta .ssh).
+
+cd "Nome da Pasta"
+   - Entra em uma pasta específica.
+
+cd ..
+   - Volta uma pasta para trás na estrutura de diretórios.
+
+clear
+   - Limpa toda a tela do terminal.
+
+mkdir nome-da-pasta
+   - Cria uma nova pasta no computador.
+
+touch nome-do-arquivo.txt
+   - Cria um novo arquivo vazio no computador.
+
+rm nome-do-arquivo.txt
+   - Deleta um arquivo específico.
+
+rm -rf nome-da-pasta
+   - Deleta uma pasta e tudo o que estiver dentro dela de forma definitiva. Use com cuidado!
+
+cp arquivo-origem.txt arquivo-destino.txt
+   - Copia um arquivo.
+
+mv arquivo.txt nova-pasta/
+   - Move (ou renomeia) um arquivo para outro local.
