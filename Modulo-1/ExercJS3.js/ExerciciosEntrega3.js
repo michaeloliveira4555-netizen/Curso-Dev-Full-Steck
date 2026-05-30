@@ -1,4 +1,4 @@
-const prompt = require('prompt-sync')()
+const prompt = require("prompt-sync")()
 /*
 LlSTA DE TAREFAS 3 - T1/2026
 
@@ -83,23 +83,107 @@ if (funcionario.experiencia <= 2){
 no inventário do jogador (ex: { espada: 1, poção: 5, escudo: 2 }). Use for...in para
 listar o inventário completo. Permita que o usuário informe um item para usar:
 reduza a quantidade em 1 ou exiba "item esgotado" se for zero.
-*/
 
+let inventario = 
+    {espada: 2, poção: 5, escudo: 2}
 
-/*
+console.log('Inventário atual:')
+
+for(chave in inventario){
+    console.log(`${chave}: ${inventario[chave]}`)
+}
+
+let item = prompt('Informe um item do inventário para usar (espada, poção, escudo)? ')
+
+if (inventario[item] !== undefined){
+    if (inventario[item] > 0){
+        (inventario[item] = inventario[item] - 1)
+    } else {
+        console.log('Item esgotado!')
+    }
+} else {
+    console.log('Esse item é inválido!')
+}
+
+console.log('Inventário atual: ')
+
+for(chave in inventario){
+    console.log(`${chave}: ${inventario[chave]}`)
+}
+
 5. Crie um objeto representando o orçamento mensal de uma pessoa, com
 categorias como alimentação, transporte, lazer e saúde, cada uma com valor
 planejado e valor gasto. Use for...in para percorrer as categorias e exibir se cada
 uma ficou dentro ou acima do orçamento, e calcule o saldo geral do mês.
+
+let orcamento ={
+    alimentacao: {planejado: 1000, realizado: 1100},
+    transporte: {planejado: 600, realizado: 500},
+    lazer: {planejado: 300, realizado: 340},
+    saude: {planejado: 150, realizado: 100}
+    
+}
+
+console.log("Orçamento mensal: ")
+
+let saldoGeral = 0
+
+for (gastos in orcamento){
+    let planejado = orcamento[gastos].planejado
+    let realizado = orcamento[gastos].realizado
+
+    console.log(`${gastos}: Planejado: ${planejado} e Realizado: ${realizado}`)
+
+    if (planejado>=realizado){
+        console.log('Parabéns, você ficou dentro do orçamento!')
+    } else {
+        console.log('Cuidado você ultrapassou o orçamento.')
+    }
+
+    let saldo = planejado - realizado
+    saldoGeral = saldoGeral + saldo
+
+}
+
+console.log(`Saldo no final do mês é de: ${saldoGeral}`)
+
 6. Crie um array de objetos representando músicas, cada uma com título, artista e
 duração em segundos. Use for...of para exibir cada música no formato "Artista —
 Título (mm:ss)". Ao final, use forEach para somar a duração total e exiba-a no
 mesmo formato.
+
+let musicas = [
+  { titulo: "Bohemian Rhapsody", artista: "Queen", duracao: 354 },
+  { titulo: "Hotel California", artista: "Eagles", duracao: 390 },
+  { titulo: "Imagine", artista: "John Lennon", duracao: 183 },
+]
+
+for (let exibir of musicas) {
+  let minutos = Math.floor(exibir.duracao / 60)
+  let segundos = exibir.duracao % 60
+
+  console.log(`${exibir.artista} - ${exibir.titulo} - ${minutos}:${segundos}`)
+}
+
+let duraçãoSegundos = 0
+
+musicas.forEach(function (musica) {
+  duraçãoSegundos = duraçãoSegundos + musica.duracao
+})
+
+let minutosTotais = Math.floor(duraçãoSegundos / 60)
+let segundosTotais = duraçãoSegundos % 60
+
+console.log(`A duração total é de: ${minutosTotais}:${segundosTotais}!`)
+
 7. Crie um array de objetos com nome e nota de 6 alunos. Use for...of para classificar
 cada aluno (Aprovado, Recuperação ou Reprovado) e exibir o resultado. Use
 forEach para calcular e exibir separadamente a média dos aprovados e a média
 dos reprovados.
+*/
 
+
+/*
 8. Crie um array de objetos representando produtos com nome, preço e quantidade.
 Use forEach para calcular o valor total em estoque de cada produto (preço ×
 quantidade) e exibir um relatório. Ao final, exiba o valor total geral de todo o
